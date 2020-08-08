@@ -16,6 +16,14 @@ app.use(expressLayouts)
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }))
 
+// exposing filepond modules from node_modules for clients use
+const filePondModules = ['filepond-plugin-file-encode', 'filepond-plugin-image-preview', 'filepond-plugin-image-resize', 'filepond']
+filePondModules.forEach(currentModule => {
+    let module_dir = require.resolve(currentModule)
+                           .match(/.*\/node_modules\/[^/]+\//)[0];
+    app.use('/' + currentModule, express.static(module_dir + 'dist/'));
+})
+
 const mongoose = require('mongoose')
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,

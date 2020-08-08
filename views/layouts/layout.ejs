@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Library</title>
+    <link rel="stylesheet" href="/filepond/filepond.css">
+    <link rel="stylesheet" href="/filepond-plugin-image-preview/filepond-plugin-image-preview.css">
   </head>
   <body>
     <%- include('../partials/header.ejs') %>
@@ -11,6 +13,11 @@
     <br />
     <%- body %>
     <br />
-    after
+
+    <script src="/filepond-plugin-image-preview/filepond-plugin-image-preview.js" ></script>
+    <script src="/filepond-plugin-file-encode/filepond-plugin-file-encode.js"></script>
+    <script src="/filepond-plugin-image-resize/filepond-plugin-image-resize.js"></script>
+    <script src="/filepond/filepond.js"></script>
+    <script src="/javascripts/upload.js"></script>
   </body>
 </html>
