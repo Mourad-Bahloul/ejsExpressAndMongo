@@ -16,7 +16,11 @@ app.use(expressLayouts)
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }))
 
-// exposing filepond modules from node_modules for clients use
+// For using PUT and DELETE http methods from html forms
+const methodOverride = require('method-override')
+app.use(methodOverride('_method'))
+
+// Exposing filepond modules from node_modules for clients use
 const filePondModules = ['filepond-plugin-file-encode', 'filepond-plugin-image-preview', 'filepond-plugin-image-resize', 'filepond']
 filePondModules.forEach(currentModule => {
     let module_dir = require.resolve(currentModule)
